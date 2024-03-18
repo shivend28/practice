@@ -1,4 +1,6 @@
-package com.sss.dp.lcs_related_questions.print_lcs;
+package com.sss.dp.lcs_related_questions.print_lc_sub_string;
+
+import static com.sss.dp.lcs_related_questions.print_lcs.TopDown.maxLen;
 
 public class TopDown {
     public static void main(String[] args) {
@@ -20,9 +22,5 @@ public class TopDown {
             }
         }
         return dp[m][n];
-    }
-
-    public static String maxLen(String a, String b) {
-        return a.length() > b.length() ? a : b;
     }
 }
