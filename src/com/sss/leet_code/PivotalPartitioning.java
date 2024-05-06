@@ -4,10 +4,11 @@ import java.util.Arrays;
 
 public class PivotalPartitioning {
     /*
-            1, 4, 5, 9, 2, 6, 8
+            Using Same Array
+            arr = 1, 4, 5, 9, 2, 6, 8
             k = 5
 
-            1, 4, 2, 5, 9, 6, 8
+            o/p = 1, 4, 2, 5, 9, 6, 8
 
      */
 
@@ -29,9 +30,6 @@ public class PivotalPartitioning {
             }
         }
         for (int i = 0; i < n; i++) {
-//            if (arr[i] > k && i < indexOfK) {
-//                continue;
-//            }
             if (i > indexOfK && arr[i] <= arr[indexOfK]) {
                 int temp = arr[i];
                 for (int j = i; j >= indexOfK ; j--) {
