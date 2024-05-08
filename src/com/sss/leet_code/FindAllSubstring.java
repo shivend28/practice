@@ -2,7 +2,7 @@ package com.sss.leet_code;
 
 public class FindAllSubstring {
     public static void main(String[] args) {
-        findAllSubStrings("abc", "");
+        findAllSubStrings("ababa", "");
     }
 
     private static void findAllSubStrings(String str, String s) {
