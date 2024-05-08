@@ -5,24 +5,24 @@ import java.util.Queue;
 
 public class CountHeightOfEachNode {
     public static void main(String[] args) {
-        Node n8 = new Node(null, null, "n8");
-        Node n7 = new Node(null, null, "n7");
-        Node n6 = new Node(null, null, "n6");
-        Node n5 = new Node(n8, null, "n5");
-        Node n4 = new Node(n7, null, "n4");
-        Node n3 = new Node(n5, n6, "n3");
-        Node n2 = new Node(n4, null, "n2");
-        Node n1 = new Node(n2, n3, "n1");
+        TreeNode n8 = new TreeNode(null, null, "n8");
+        TreeNode n7 = new TreeNode(null, null, "n7");
+        TreeNode n6 = new TreeNode(null, null, "n6");
+        TreeNode n5 = new TreeNode(n8, null, "n5");
+        TreeNode n4 = new TreeNode(n7, null, "n4");
+        TreeNode n3 = new TreeNode(n5, n6, "n3");
+        TreeNode n2 = new TreeNode(n4, null, "n2");
+        TreeNode n1 = new TreeNode(n2, n3, "n1");
         set_descendant_per_node(n1);
         System.out.println(count_descendants(n1, "n3"));
         System.out.println(count_descendants(n1, "n7"));
     }
 
-    public static int count_descendants(Node node, String data) {
-        Queue<Node> q = new LinkedList<>();
-        q.add(node);
+    public static int count_descendants(TreeNode treeNode, String data) {
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(treeNode);
         while (!q.isEmpty()) {
-            Node n = q.poll();
+            TreeNode n = q.poll();
             if (n.data.equals(data)) {
                 return n.count;
             }
@@ -36,36 +36,22 @@ public class CountHeightOfEachNode {
         return -1;
     }
 
-    public static void set_descendant_per_node(Node node) {
-        if(node == null) {
+    public static void set_descendant_per_node(TreeNode treeNode) {
+        if(treeNode == null) {
             return;
         }
-        node.count = count_numbers(node) - 1;
-        set_descendant_per_node(node.left);
-        set_descendant_per_node(node.right);
+        treeNode.count = count_numbers(treeNode) - 1;
+        set_descendant_per_node(treeNode.left);
+        set_descendant_per_node(treeNode.right);
     }
 
-    public static int count_numbers(Node node) {
-        if(node == null) {
+    public static int count_numbers(TreeNode treeNode) {
+        if(treeNode == null) {
             return 0;
         }
-        return count_numbers(node.left) +  count_numbers(node.right) + 1;
+        return count_numbers(treeNode.left) +  count_numbers(treeNode.right) + 1;
     }
-
-
 }
 
-class Node {
-    Node left;
-    Node right;
-    int count;  // This will be an ans for each node
-    String data;
 
-    public Node(Node left, Node right, String data) {
-        this.left = left;
-        this.right = right;
-        this.data = data;
-    }
-
-}
 
