@@ -8,7 +8,7 @@ public class LRUCache {
     private  static LinkedHashSet<Integer> cache = new LinkedHashSet<>();
     static int capacity = 3;
     public static void main(String[] args) {
-        List<Integer> data = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> data = Arrays.asList(1, 2, 3, 2, 5, 3, 4);
         for (Integer d: data) {
             add(d);
         }
@@ -20,7 +20,7 @@ public class LRUCache {
     private static void add(Integer d) {
         if (!cache.contains(d)) {
             if (cache.size() == capacity) {
-                cache.remove(cache.getFirst());
+                cache.remove(cache.iterator().next());
             }
         } else {
             cache.remove(d);
