@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class ListOfMapOperationUsingStreamApi {
     public static void main(String[] args) {
@@ -33,26 +32,18 @@ public class ListOfMapOperationUsingStreamApi {
         myMap.put("Two", 2);
         myMap.put("Three", 3);
 
-        myMap.keySet().removeAll(
-                myMap.entrySet().stream()
-                        .filter(a->a.getValue().equals(2))
-                        .map(e -> e.getKey()).collect(Collectors.toList()));
+        myMap.keySet().removeAll(myMap.entrySet().stream().filter(a -> a.getValue().equals(2)).map(e -> e.getKey()).collect(Collectors.toList()));
 
         System.out.println(myMap);
 
-        mapList.forEach(x ->
-                {
-                    x.entrySet()
-                            .stream()
-                            .filter(y -> y.getValue() > 10)
-                            .map(e -> e.getValue()).collect(Collectors.toList());
-                    System.out.println(x);
-                }
-        );
+        mapList.forEach(x -> {
+            x.entrySet().stream().filter(y -> y.getValue() > 10).map(e -> e.getValue()).collect(Collectors.toList());
+            System.out.println(x);
+        });
 
         mapList.forEach(x -> x.entrySet().stream().reduce((y, z) -> {
             if (y.getValue() > z.getValue()) {
-               return y;
+                return y;
             }
             return z;
         }));
